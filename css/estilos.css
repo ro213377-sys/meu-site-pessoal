@@ -1,0 +1,710 @@
+/* =========================================================
+   Site Pessoal — Ricardo Oliveira da Silva
+   Folha de estilos única, compartilhada por todas as páginas
+   Abordagem: mobile-first (estilos base = celular,
+   media queries com min-width evoluem o layout para telas maiores)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+    --ink-900: #0e1b24;
+    --ink-800: #142430;
+    --ink-700: #1c313f;
+    --paper: #eaf1f3;
+    --accent-amber: #e8a33d;
+    --accent-teal: #4fb3a9;
+    --text-body: #c7d4d9;
+    --text-muted: #85a0ae;
+    --line: rgba(79, 179, 169, 0.25);
+
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    --largura-conteudo: 780px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--ink-900);
+    background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 42px 42px;
+    color: var(--text-body);
+    font-family: var(--font-body);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--accent-teal);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+}
+
+a:hover,
+a:focus-visible {
+    border-bottom-color: var(--accent-teal);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent-amber);
+    outline-offset: 2px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--paper);
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+/* Mobile-first: tamanho base menor, cresce a partir de 700px */
+h1 {
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.6em;
+}
+
+h3 {
+    font-size: 1.05rem;
+    color: var(--accent-teal);
+}
+
+@media (min-width: 700px) {
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+}
+
+p {
+    max-width: 68ch;
+}
+
+.rotulo {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent-amber);
+    letter-spacing: 0.02em;
+}
+
+/* ---------- Mídias responsivas ---------- */
+/* Requisito: imagens e mídias nunca ultrapassam a largura do contêiner */
+
+img,
+video,
+iframe,
+canvas,
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---------- Cabeçalho e navegação (Flexbox, mobile-first) ---------- */
+
+.cabecalho {
+    background-color: var(--ink-800);
+    border-bottom: 1px solid var(--ink-700);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Mobile: marca em cima, menu embaixo, em coluna */
+.cabecalho__interno {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+/* A partir de tablets: marca e menu lado a lado */
+@media (min-width: 700px) {
+    .cabecalho__interno {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.marca {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--paper);
+    font-size: 1.05rem;
+}
+
+.marca span {
+    color: var(--accent-amber);
+}
+
+.menu-principal {
+    width: 100%;
+}
+
+/* Mobile: itens do menu empilhados, em coluna */
+.menu-principal ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    width: 100%;
+}
+
+/* A partir de tablets: itens em linha, com quebra (flex-wrap) */
+@media (min-width: 700px) {
+    .menu-principal {
+        width: auto;
+    }
+
+    .menu-principal ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.4rem;
+        width: auto;
+    }
+}
+
+.menu-principal a {
+    color: var(--text-body);
+    border-bottom: 1px solid transparent;
+}
+
+.menu-principal a[aria-current="page"] {
+    color: var(--accent-amber);
+    border-bottom-color: var(--accent-amber);
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus-visible {
+    color: var(--accent-teal);
+}
+
+/* ---------- Estrutura principal ---------- */
+
+main {
+    max-width: var(--largura-conteudo);
+    margin: 0 auto;
+    padding: 2rem 1.2rem 3rem;
+}
+
+@media (min-width: 700px) {
+    main {
+        padding: 3rem 1.5rem 4rem;
+    }
+}
+
+section {
+    margin-bottom: 3.2rem;
+}
+
+section + section {
+    padding-top: 3.2rem;
+    border-top: 1px solid var(--ink-700);
+}
+
+article {
+    background-color: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    border-radius: 3px;
+    padding: 1.3rem 1.4rem;
+    margin-bottom: 1.1rem;
+}
+
+article h3 {
+    margin-top: 0;
+}
+
+.meta {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0.2rem 0 0.7rem;
+}
+
+/* ---------- Hero da página inicial (Flexbox, mobile-first) ---------- */
+
+/* Mobile: texto em cima, ilustração embaixo, empilhados */
+.hero {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 1rem;
+}
+
+.hero__grafico {
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+/* A partir de tablets: texto e ilustração lado a lado, com quebra */
+@media (min-width: 700px) {
+    .hero {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2.5rem;
+    }
+
+    .hero__texto {
+        flex: 1 1 360px;
+    }
+
+    .hero__grafico {
+        flex: 1 1 220px;
+        max-width: 260px;
+        margin: 0;
+    }
+}
+
+.hero__grafico svg {
+    width: 100%;
+    height: auto;
+}
+
+.destaque {
+    color: var(--accent-amber);
+}
+
+.botao {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-900);
+    background-color: var(--accent-teal);
+    padding: 0.6rem 1.1rem;
+    border-radius: 2px;
+    border: 1px solid var(--accent-teal);
+    margin-top: 0.6rem;
+    cursor: pointer;
+}
+
+.botao:hover,
+.botao:focus-visible {
+    background-color: transparent;
+    color: var(--accent-teal);
+}
+
+.lista-simples {
+    padding-left: 1.1rem;
+}
+
+.lista-simples li {
+    margin-bottom: 0.35rem;
+}
+
+/* ---------- Cartões de habilidades (Flexbox) ---------- */
+
+.cartoes-habilidade {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 700px) {
+    .cartoes-habilidade {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .cartoes-habilidade .cartao {
+        flex: 1 1 200px;
+    }
+}
+
+.cartoes-habilidade .cartao {
+    background-color: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    border-radius: 3px;
+    padding: 1rem 1.2rem;
+}
+
+/* Etiquetas de tecnologia (Flexbox com quebra) */
+.tags-habilidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+.tags-habilidades li {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-900);
+    background-color: var(--accent-teal);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+}
+
+/* ---------- Currículo: layout em Grid, mobile-first ---------- */
+
+.submenu-curriculo {
+    margin-top: 1rem;
+}
+
+.submenu-curriculo ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--ink-700);
+    border-bottom: 1px solid var(--ink-700);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+/* Mobile: colunas empilhadas em bloco único */
+.curriculo-grid {
+    display: block;
+}
+
+.coluna-lateral,
+.coluna-principal {
+    min-width: 0;
+}
+
+/* A partir de telas maiores: duas colunas com CSS Grid */
+@media (min-width: 800px) {
+    .curriculo-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 2.5rem;
+        align-items: start;
+    }
+}
+
+figure.retrato {
+    width: 140px;
+    max-width: 100%;
+    margin: 0 auto 1rem;
+    text-align: center;
+}
+
+@media (min-width: 800px) {
+    figure.retrato {
+        width: 100%;
+        max-width: 180px;
+        margin: 0 0 1rem;
+    }
+}
+
+figure.retrato img {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid var(--ink-700);
+}
+
+figure.retrato figcaption {
+    margin-top: 0.4rem;
+}
+
+blockquote {
+    border-left: 3px solid var(--accent-amber);
+    margin: 1.2rem 0;
+    padding: 0.2rem 0 0.2rem 1rem;
+    color: var(--paper);
+    font-style: italic;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    display: block;
+    overflow-x: auto;
+}
+
+@media (min-width: 700px) {
+    table {
+        display: table;
+        overflow-x: visible;
+    }
+}
+
+caption {
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    border-bottom: 1px solid var(--ink-700);
+}
+
+thead th {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-teal);
+}
+
+/* ---------- Formulário ---------- */
+
+.formulario {
+    display: grid;
+    gap: 1.1rem;
+    max-width: 560px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.campo label {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-body);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--paper);
+    background-color: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    border-radius: 3px;
+    padding: 0.55rem 0.7rem;
+    width: 100%;
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.campo small {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.campo-radios,
+.campo-checkbox {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.opcao-inline {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+}
+
+.grupo-radios {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+input:invalid:not(:placeholder-shown) {
+    border-color: #d9695b;
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+    border-color: var(--accent-teal);
+}
+
+/* ---------- Feedback e validação (CP3) ---------- */
+
+.feedback {
+    margin: 1rem 0 0;
+    padding: 0.8rem 1rem;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.feedback:empty {
+    display: none;
+}
+
+.feedback--sucesso {
+    background-color: rgba(79, 179, 169, 0.15);
+    border: 1px solid var(--accent-teal);
+    color: var(--accent-teal);
+}
+
+.feedback--erro {
+    background-color: rgba(217, 105, 91, 0.15);
+    border: 1px solid #d9695b;
+    color: #f0a398;
+}
+
+.feedback--info {
+    background-color: rgba(232, 163, 61, 0.12);
+    border: 1px solid var(--accent-amber);
+    color: var(--accent-amber);
+}
+
+.campo small.erro-campo {
+    color: #f0a398;
+}
+
+[aria-invalid="true"] {
+    border-color: #d9695b !important;
+}
+
+#lista-mensagens li {
+    overflow-wrap: anywhere;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- Multimídia ---------- */
+
+.midia {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 3px;
+    border: 1px solid var(--ink-700);
+}
+
+iframe.midia {
+    aspect-ratio: 16 / 9;
+    height: auto;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+figure {
+    margin: 0;
+}
+
+figure img {
+    width: 100%;
+    display: block;
+    border-radius: 3px;
+    border: 1px solid var(--ink-700);
+}
+
+figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+}
+
+iframe {
+    border: 1px solid var(--ink-700);
+    border-radius: 3px;
+}
+
+/* ---------- Gráficos ---------- */
+
+.paineis-grafico {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+canvas {
+    background-color: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    border-radius: 3px;
+}
+
+.grafico-svg {
+    background-color: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    border-radius: 3px;
+    padding: 0.5rem;
+    width: 100%;
+    height: auto;
+}
+
+.fatia {
+    stroke: var(--ink-900);
+    stroke-width: 1.5;
+}
+
+.linha-svg {
+    fill: none;
+    stroke: var(--accent-amber);
+    stroke-width: 2.5;
+}
+
+.ponto-svg {
+    fill: var(--accent-teal);
+}
+
+/* ---------- Rodapé (Flexbox, mobile-first) ---------- */
+
+.rodape {
+    background-color: var(--ink-800);
+    border-top: 1px solid var(--ink-700);
+}
+
+.rodape__interno {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.6rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+@media (min-width: 700px) {
+    .rodape__interno {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.rodape a {
+    color: var(--text-muted);
+}
