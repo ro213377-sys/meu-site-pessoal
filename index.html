@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo Oliveira da Silva — Início</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="cabecalho__interno">
+            <p class="marca">Ricardo<span>.</span>dev</p>
+            <nav class="menu-principal" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Início</a></li>
+                    <li><a href="curriculo.html">Currículo</a></li>
+                    <li><a href="formulario.html">Contato</a></li>
+                    <li><a href="multimidia.html">Multimídia</a></li>
+                    <li><a href="graficos.html">Gráficos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero__texto">
+                <p class="rotulo">// apresentação</p>
+                <h1>Ricardo Oliveira<br>da Silva</h1>
+                <p>
+                    Sou estudante de <span class="destaque">Análise e Desenvolvimento de Sistemas</span>,
+                    construindo este site como parte de um exercício de estruturação semântica
+                    em HTML e estilização em CSS. Gosto de entender como uma página é montada
+                    por dentro antes de me preocupar com o visual.
+                </p>
+                <p>
+                    Aqui você encontra meu currículo, um formulário de contato funcional,
+                    uma página de multimídia e uma página com gráficos feitos em Canvas e SVG.
+                </p>
+                <a class="botao" href="curriculo.html">Ver currículo</a>
+            </div>
+            <div class="hero__grafico" aria-hidden="true">
+                <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="110" cy="110" r="90" fill="none" stroke="#1c313f" stroke-width="1.5" />
+                    <circle cx="110" cy="110" r="60" fill="none" stroke="#4fb3a9" stroke-width="1.5" stroke-dasharray="6 6" />
+                    <line x1="20" y1="110" x2="200" y2="110" stroke="#1c313f" stroke-width="1" />
+                    <line x1="110" y1="20" x2="110" y2="200" stroke="#1c313f" stroke-width="1" />
+                    <circle cx="110" cy="110" r="7" fill="#e8a33d" />
+                    <circle cx="170" cy="70" r="4" fill="#4fb3a9" />
+                    <circle cx="55" cy="150" r="4" fill="#4fb3a9" />
+                </svg>
+            </div>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre este site</h2>
+            <article>
+                <h3>Objetivo do projeto</h3>
+                <p class="meta">Checkpoint 1 — estrutura e estilo</p>
+                <p>
+                    Este é o primeiro checkpoint do meu projeto de site pessoal: uma base
+                    HTML semântica (<code>header</code>, <code>nav</code>, <code>main</code>,
+                    <code>section</code>, <code>article</code>, <code>footer</code>) com uma
+                    única folha de estilos externa aplicada a todas as páginas.
+                </p>
+            </article>
+            <article>
+                <h3>O que você encontra por aqui</h3>
+                <ul class="lista-simples">
+                    <li><strong>Currículo</strong> — formação, habilidades e experiência.</li>
+                    <li><strong>Contato</strong> — formulário com validação nativa.</li>
+                    <li><strong>Multimídia</strong> — vídeo, áudio e conteúdo incorporado.</li>
+                    <li><strong>Gráficos</strong> — visualizações em Canvas e SVG.</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape__interno">
+            <p>© 2026 Ricardo Oliveira da Silva</p>
+            <p><a href="formulario.html">Entrar em contato</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>

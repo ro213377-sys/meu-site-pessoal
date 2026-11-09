@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo Oliveira da Silva — Gráficos</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="cabecalho__interno">
+            <p class="marca">Ricardo<span>.</span>dev</p>
+            <nav class="menu-principal" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="curriculo.html">Currículo</a></li>
+                    <li><a href="formulario.html">Contato</a></li>
+                    <li><a href="multimidia.html">Multimídia</a></li>
+                    <li><a href="graficos.html" aria-current="page">Gráficos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="canvas-secao">
+            <p class="rotulo">// gráficos</p>
+            <h1>Canvas e SVG</h1>
+            <p>
+                Duas formas diferentes de desenhar gráficos na web: o elemento
+                <code>canvas</code>, desenhado via JavaScript, e um <code>SVG</code>
+                estilizado diretamente com CSS.
+            </p>
+
+            <article>
+                <h3>Horas de estudo por tecnologia (Canvas)</h3>
+                <p class="meta">Gráfico de barras desenhado em JavaScript</p>
+                <canvas id="grafico-canvas" width="420" height="260" role="img"
+                        aria-label="Gráfico de barras com horas de estudo por tecnologia: HTML/CSS 18, JavaScript 14, Banco de Dados 10, Lógica 12">
+                </canvas>
+            </article>
+        </section>
+
+        <section id="svg-secao">
+            <h2>Distribuição de disciplinas (SVG)</h2>
+            <div class="paineis-grafico">
+                <article>
+                    <h3>Gráfico de pizza</h3>
+                    <p class="meta">SVG estilizado com CSS</p>
+                    <svg class="grafico-svg" viewBox="0 0 200 200" width="220" height="220"
+                         role="img" aria-label="Gráfico de pizza com a distribuição do tempo de estudo entre as disciplinas">
+                        <circle class="fatia" cx="100" cy="100" r="80" fill="#1c313f" />
+                        <!-- HTML/CSS: 35% -->
+                        <path class="fatia" fill="#e8a33d"
+                              d="M100,100 L100,20 A80,80 0 0 1 168,140 Z" />
+                        <!-- JavaScript: 30% -->
+                        <path class="fatia" fill="#4fb3a9"
+                              d="M100,100 L168,140 A80,80 0 0 1 55,175 Z" />
+                        <!-- Banco de Dados: 20% -->
+                        <path class="fatia" fill="#7fd1c8"
+                              d="M100,100 L55,175 A80,80 0 0 1 20,100 Z" />
+                        <!-- Lógica: 15% -->
+                        <path class="fatia" fill="#c78a2c"
+                              d="M100,100 L20,100 A80,80 0 0 1 100,20 Z" />
+                    </svg>
+                </article>
+
+                <article>
+                    <h3>Gráfico de linha</h3>
+                    <p class="meta">Progresso simulado ao longo do semestre</p>
+                    <svg class="grafico-svg" viewBox="0 0 220 160" width="260" height="180"
+                         role="img" aria-label="Gráfico de linha mostrando progresso crescente ao longo do semestre">
+                        <line x1="20" y1="10" x2="20" y2="140" stroke="#1c313f" stroke-width="1" />
+                        <line x1="20" y1="140" x2="210" y2="140" stroke="#1c313f" stroke-width="1" />
+                        <polyline class="linha-svg"
+                            points="20,120 60,100 100,90 140,60 180,35 210,20" />
+                        <circle class="ponto-svg" cx="20" cy="120" r="4" />
+                        <circle class="ponto-svg" cx="60" cy="100" r="4" />
+                        <circle class="ponto-svg" cx="100" cy="90" r="4" />
+                        <circle class="ponto-svg" cx="140" cy="60" r="4" />
+                        <circle class="ponto-svg" cx="180" cy="35" r="4" />
+                        <circle class="ponto-svg" cx="210" cy="20" r="4" />
+                    </svg>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape__interno">
+            <p>© 2026 Ricardo Oliveira da Silva</p>
+            <p><a href="formulario.html">Entrar em contato</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('grafico-canvas');
+        const ctx = canvas.getContext('2d');
+
+        const dados = [
+            { rotulo: 'HTML/CSS', valor: 18, cor: '#e8a33d' },
+            { rotulo: 'JavaScript', valor: 14, cor: '#4fb3a9' },
+            { rotulo: 'Banco de Dados', valor: 10, cor: '#7fd1c8' },
+            { rotulo: 'Lógica', valor: 12, cor: '#c78a2c' }
+        ];
+
+        function desenharGrafico() {
+            const largura = canvas.width;
+            const altura = canvas.height;
+            const margem = 40;
+            const areaGrafico = altura - margem * 2;
+            const valorMaximo = Math.max(...dados.map(d => d.valor));
+            const larguraBarra = (largura - margem * 2) / dados.length - 20;
+
+            ctx.clearRect(0, 0, largura, altura);
+
+            ctx.strokeStyle = '#1c313f';
+            ctx.beginPath();
+            ctx.moveTo(margem, margem);
+            ctx.lineTo(margem, altura - margem);
+            ctx.lineTo(largura - margem, altura - margem);
+            ctx.stroke();
+
+            dados.forEach((item, indice) => {
+                const alturaBarra = (item.valor / valorMaximo) * areaGrafico;
+                const x = margem + indice * ((largura - margem * 2) / dados.length) + 10;
+                const y = altura - margem - alturaBarra;
+
+                ctx.fillStyle = item.cor;
+                ctx.fillRect(x, y, larguraBarra, alturaBarra);
+
+                ctx.fillStyle = '#c7d4d9';
+                ctx.font = '11px "IBM Plex Mono", monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText(item.valor + 'h', x + larguraBarra / 2, y - 8);
+                ctx.fillText(item.rotulo, x + larguraBarra / 2, altura - margem + 16);
+            });
+        }
+
+        desenharGrafico();
+    </script>
+
+</body>
+</html>

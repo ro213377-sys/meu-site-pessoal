@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo Oliveira da Silva — Contato</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="cabecalho__interno">
+            <p class="marca">Ricardo<span>.</span>dev</p>
+            <nav class="menu-principal" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="curriculo.html">Currículo</a></li>
+                    <li><a href="formulario.html" aria-current="page">Contato</a></li>
+                    <li><a href="multimidia.html">Multimídia</a></li>
+                    <li><a href="graficos.html">Gráficos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="formulario-contato">
+            <p class="rotulo">// contato</p>
+            <h1>Fale comigo</h1>
+            <p>
+                Preencha o formulário abaixo para enviar uma mensagem. Os campos marcados
+                com * são obrigatórios — tente enviar em branco para ver os avisos.
+                O que você digita fica salvo como rascunho neste navegador.
+            </p>
+
+            <article>
+                <form class="formulario" id="form-contato" action="#" method="post" novalidate>
+
+                    <div class="campo">
+                        <label for="nome">Nome completo *</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            placeholder="Seu nome"
+                            minlength="3"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="email">E-mail *</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="voce@exemplo.com"
+                            required
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefone">Telefone</label>
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            placeholder="(11) 91234-5678"
+                            pattern="\(\d{2}\)\s?\d{4,5}-\d{4}"
+                        >
+                        <small>Formato: (11) 91234-5678</small>
+                    </div>
+
+                    <div class="campo">
+                        <label for="nascimento">Data de nascimento</label>
+                        <input
+                            type="date"
+                            id="nascimento"
+                            name="nascimento"
+                            max="2025-01-01"
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="assunto">Assunto *</label>
+                        <select id="assunto" name="assunto" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="projeto">Proposta de projeto</option>
+                            <option value="duvida">Dúvida sobre o site</option>
+                            <option value="trabalho">Oportunidade de trabalho</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <fieldset class="campo campo-radios">
+                        <legend>Forma de contato preferida</legend>
+                        <div class="grupo-radios">
+                            <span class="opcao-inline">
+                                <input type="radio" id="contato-email" name="contato_preferido" value="email" checked>
+                                <label for="contato-email">E-mail</label>
+                            </span>
+                            <span class="opcao-inline">
+                                <input type="radio" id="contato-telefone" name="contato_preferido" value="telefone">
+                                <label for="contato-telefone">Telefone</label>
+                            </span>
+                            <span class="opcao-inline">
+                                <input type="radio" id="contato-whatsapp" name="contato_preferido" value="whatsapp">
+                                <label for="contato-whatsapp">WhatsApp</label>
+                            </span>
+                        </div>
+                    </fieldset>
+
+                    <div class="campo">
+                        <label for="urgencia">Nível de urgência (1 a 5)</label>
+                        <input
+                            type="number"
+                            id="urgencia"
+                            name="urgencia"
+                            min="1"
+                            max="5"
+                            step="1"
+                            value="3"
+                        >
+                    </div>
+
+                    <div class="campo">
+                        <label for="mensagem">Mensagem *</label>
+                        <textarea
+                            id="mensagem"
+                            name="mensagem"
+                            minlength="10"
+                            maxlength="500"
+                            placeholder="Escreva sua mensagem..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="campo campo-checkbox">
+                        <span class="opcao-inline">
+                            <input type="checkbox" id="termos" name="termos" required>
+                            <label for="termos">Li e concordo com o uso dos meus dados para retorno de contato *</label>
+                        </span>
+                    </div>
+
+                    <button class="botao" type="submit">Enviar mensagem</button>
+                </form>
+
+                <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+            </article>
+        </section>
+
+        <section id="mensagens-salvas">
+            <h2>Mensagens enviadas neste navegador</h2>
+            <article>
+                <ul id="lista-mensagens" class="lista-simples"></ul>
+                <button type="button" id="limpar-mensagens" class="botao" hidden>Limpar histórico</button>
+            </article>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape__interno">
+            <p>© 2026 Ricardo Oliveira da Silva</p>
+            <p><a href="index.html">Voltar ao início</a></p>
+        </div>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>

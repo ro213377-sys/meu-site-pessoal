@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ricardo Oliveira da Silva — Multimídia</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="cabecalho">
+        <div class="cabecalho__interno">
+            <p class="marca">Ricardo<span>.</span>dev</p>
+            <nav class="menu-principal" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="curriculo.html">Currículo</a></li>
+                    <li><a href="formulario.html">Contato</a></li>
+                    <li><a href="multimidia.html" aria-current="page">Multimídia</a></li>
+                    <li><a href="graficos.html">Gráficos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="video">
+            <p class="rotulo">// multimídia</p>
+            <h1>Vídeo, áudio e conteúdo incorporado</h1>
+            <p>
+                Nesta página reúno diferentes formatos de mídia: um vídeo local, um áudio
+                de exemplo e um conteúdo externo incorporado por <code>iframe</code>.
+                Substitua os arquivos de exemplo pelos seus próprios quando tiver conteúdo real.
+            </p>
+
+            <article>
+                <h3>Vídeo de apresentação</h3>
+                <p class="meta">Arquivo de exemplo — substitua por um vídeo próprio</p>
+                <video class="midia" controls preload="metadata">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Seu navegador não suporta reprodução de vídeo.
+                </video>
+            </article>
+        </section>
+
+        <section id="audio">
+            <h2>Áudio</h2>
+            <article>
+                <h3>Trilha de exemplo</h3>
+                <p class="meta">Arquivo de exemplo — substitua por um áudio próprio</p>
+                <audio class="midia" controls preload="metadata">
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    Seu navegador não suporta reprodução de áudio.
+                </audio>
+            </article>
+        </section>
+
+        <section id="incorporado">
+            <h2>Conteúdo incorporado</h2>
+            <article>
+                <h3>Vídeo incorporado (iframe)</h3>
+                <p class="meta">Exemplo de conteúdo externo via iframe</p>
+                <iframe
+                    class="midia"
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Vídeo incorporado de exemplo"
+                    loading="lazy"
+                    allowfullscreen>
+                </iframe>
+            </article>
+        </section>
+
+        <section id="galeria">
+            <h2>Galeria de imagens</h2>
+            <div class="galeria">
+                <figure>
+                    <img src="https://picsum.photos/seed/estudos/400/280" alt="Foto ilustrativa de ambiente de estudos" loading="lazy">
+                    <figcaption>Ambiente de estudos</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://picsum.photos/seed/codigo/400/280" alt="Foto ilustrativa de tela com código" loading="lazy">
+                    <figcaption>Prática de código</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://picsum.photos/seed/projeto/400/280" alt="Foto ilustrativa de projeto em desenvolvimento" loading="lazy">
+                    <figcaption>Projeto em andamento</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape__interno">
+            <p>© 2026 Ricardo Oliveira da Silva</p>
+            <p><a href="formulario.html">Entrar em contato</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
